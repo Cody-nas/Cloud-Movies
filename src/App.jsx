@@ -1,16 +1,13 @@
+import Home from "./Components/Home";
 
-
-import './App.css'
+import "./index.css";
 
 function App() {
-  
   return (
     <>
-      <h1 className="text-3xl font-semibold text-red-500 ">
-        Hello world!
-      </h1>
+      <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
