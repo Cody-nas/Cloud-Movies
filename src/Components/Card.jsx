@@ -1,8 +1,11 @@
 import React from "react";
 
-const Card = () => {
+const Card = ({ cardWidth }) => {
   return (
-    <div className="h-[650px] relative flex justify-center items-center shrink-0 p-2 bg-gray-800 group">
+    <div
+      style={{ width: cardWidth }}
+      className="h-[650px] relative flex justify-center items-center shrink-0 p-2 bg-gray-800 group"
+    >
       <div className="w-[97%] h-[97%] mx-auto text-white absolute rounded-lg bg-black/50 flex flex-col justify-center gap-y-2 p-10 cursor-pointer ">
         <h1 className="text-4xl">The Godfather</h1>
         <div className="flex gap-x-2 items-center ">
@@ -23,7 +26,7 @@ const Card = () => {
       <img
         src="./god.png"
         alt="movie image"
-        className="object-cover rounded-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+        className=" absolute w-[97%] h-[97%] object-cover rounded-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500"
       />
     </div>
   );
