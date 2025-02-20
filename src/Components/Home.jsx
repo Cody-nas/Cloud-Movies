@@ -41,7 +41,7 @@ const Home = () => {
       <div className="flex flex-wrap">
         {movies.map((movie, index) => [
           <div key={index}>
-            <Card cardWidth={cardWidth} />
+            <Card movie={movie} cardWidth={cardWidth} />
           </div>,
         ])}
       </div>
