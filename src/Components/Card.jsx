@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Card = ({ cardWidth, movie }) => {
   const { title, image, genres, originalLanguage, releaseDate, overview } =
@@ -9,7 +10,9 @@ const Card = ({ cardWidth, movie }) => {
       style={{ width: cardWidth }}
       className="h-[650px] relative flex justify-center items-center shrink-0 p-2 bg-gray-800 group"
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showDesc ? 1 : 0 }}
         onClick={() => setShowDesc(!showDesc)}
         className="w-[97%] h-[97%] mx-auto text-white absolute rounded-lg bg-black/50 flex flex-col justify-center gap-y-2 p-10 cursor-pointer "
       >
@@ -34,7 +37,7 @@ const Card = ({ cardWidth, movie }) => {
           <span className="text-red-500">Summary:</span>
           <span className="first-letter:pl-2">{overview}</span>
         </p>
-      </div>
+      </motion.div>
       <img
         src={image}
         alt="movie image"
