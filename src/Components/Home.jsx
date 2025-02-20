@@ -23,6 +23,7 @@ const Home = () => {
       try {
         const response = await fetch(url, options);
         const result = await response.json();
+        setMovies(result);
         console.log(result);
       } catch (error) {
         console.error(error);
@@ -38,6 +39,7 @@ const Home = () => {
       style={{ width: wrapperWidth }}
     >
       <div className="flex flex-wrap">
+        {movies.map((movie, index) => {})}
         <div>
           <Card cardWidth={cardWidth} />
         </div>
