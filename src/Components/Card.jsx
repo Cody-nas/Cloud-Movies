@@ -1,14 +1,18 @@
-import React from "react";
+import { useState } from "react";
 
 const Card = ({ cardWidth, movie }) => {
   const { title, image, genres, originalLanguage, releaseDate, overview } =
     movie;
+  const [showDesc, setShowDesc] = useState(false);
   return (
     <div
       style={{ width: cardWidth }}
       className="h-[650px] relative flex justify-center items-center shrink-0 p-2 bg-gray-800 group"
     >
-      <div className="w-[97%] h-[97%] mx-auto text-white absolute rounded-lg bg-black/50 flex flex-col justify-center gap-y-2 p-10 cursor-pointer ">
+      <div
+        onClick={() => setShowDesc(!showDesc)}
+        className="w-[97%] h-[97%] mx-auto text-white absolute rounded-lg bg-black/50 flex flex-col justify-center gap-y-2 p-10 cursor-pointer "
+      >
         <h1 className="text-4xl">{title}</h1>
         <div className="flex gap-x-2 items-center ">
           <span className="text-lg">Genres:</span>
