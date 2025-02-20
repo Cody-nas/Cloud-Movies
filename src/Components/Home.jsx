@@ -40,7 +40,7 @@ const Home = () => {
     >
       <div className="flex flex-wrap">
         {movies.map((movie, index) => [
-          <div>
+          <div key={index}>
             <Card cardWidth={cardWidth} />
           </div>,
         ])}
