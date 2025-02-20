@@ -39,10 +39,11 @@ const Home = () => {
       style={{ width: wrapperWidth }}
     >
       <div className="flex flex-wrap">
-        {movies.map((movie, index) => {})}
-        <div>
-          <Card cardWidth={cardWidth} />
-        </div>
+        {movies.map((movie, index) => [
+          <div>
+            <Card cardWidth={cardWidth} />
+          </div>,
+        ])}
       </div>
     </div>
   );
