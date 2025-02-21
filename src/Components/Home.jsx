@@ -1,4 +1,5 @@
 import Card from "./Card";
+import Navigation from "./Navigation";
 import { useState, useEffect } from "react";
 
 const Home = () => {
@@ -34,18 +35,21 @@ const Home = () => {
   }, []);
 
   return (
-    <div
-      className="flex justify-center items-center"
-      style={{ width: wrapperWidth }}
-    >
-      <div className="flex flex-wrap">
-        {movies.map((movie, index) => [
-          <div key={index}>
-            <Card movie={movie} cardWidth={cardWidth} />
-          </div>,
-        ])}
+    <>
+      <Navigation />
+      <div
+        className="flex justify-center items-center"
+        style={{ width: wrapperWidth }}
+      >
+        <div className="flex flex-wrap">
+          {movies.map((movie, index) => [
+            <div key={index}>
+              <Card movie={movie} cardWidth={cardWidth} />
+            </div>,
+          ])}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
