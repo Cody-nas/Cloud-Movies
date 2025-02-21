@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 const Home = () => {
   const [cardWidth, setCardWidth] = useState(500);
-  const cardInRow = 5;
+  const cardInRow = 3;
   const [wrapperWidth, setWrapperWidth] = useState(cardWidth * cardInRow);
   const [movies, setMovies] = useState([]);
 
