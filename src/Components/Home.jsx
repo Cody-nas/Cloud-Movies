@@ -7,16 +7,19 @@ const Home = () => {
   const cardInRow = 3;
   const [wrapperWidth, setWrapperWidth] = useState(cardWidth * cardInRow);
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [group, setGroup] = useState("Popular");
+
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const getMovies = async () => {
-      const url =
-        "https://tvshow.p.rapidapi.com/Movie/NowPlaying?Page=1&Language=en-US&Adult=true";
+      const url = `${baseUrl}/${group}?Page=${page}&Language=en-US&Adult=true`;
       const options = {
         method: "GET",
         headers: {
-          "x-rapidapi-key":
-            "b07ef8727dmsh5124d1928e620c4p15e753jsn176e1783c5eb",
+          "x-rapidapi-key": apiKey,
           "x-rapidapi-host": "tvshow.p.rapidapi.com",
         },
       };
@@ -32,7 +35,7 @@ const Home = () => {
     };
 
     getMovies();
-  }, []);
+  }, [page, group]);
 
   return (
     <>
