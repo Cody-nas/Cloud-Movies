@@ -39,7 +39,7 @@ const Home = () => {
 
   return (
     <>
-      <Navigation />
+      <Navigation page={page} setPage={setPage} setGroup={setGroup} />
       <div
         className="flex justify-center items-center"
         style={{ width: wrapperWidth }}

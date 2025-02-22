@@ -1,15 +1,21 @@
 import { IoMdArrowDropleftCircle } from "react-icons/io";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 
-const Navigation = () => {
+const Navigation = ({ page, setPage, setGroup }) => {
   return (
     <div className="relative z-10">
       <div className="fixed bottom-5 left-5 flex items-center gap-x-2 text-2xl bg-yellow-500/50 rounded-full px-2">
-        <span className="cursor-pointer">
+        <span
+          onClick={() => page > 1 && setPage(page - 1)} // Check to prevent going below page 1
+          className="cursor-pointer"
+        >
           <IoMdArrowDropleftCircle />
         </span>
-        <p className="text-xl select-none ">1</p>
-        <span className="cursor-pointer">
+        <p className="text-xl select-none ">{page}</p>
+        <span
+          onClick={() => setPage(page + 1)} // Increase the page number
+          className="cursor-pointer"
+        >
           <IoMdArrowDroprightCircle />
         </span>
       </div>
