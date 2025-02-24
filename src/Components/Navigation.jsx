@@ -19,7 +19,11 @@ const Navigation = ({ page, setPage, setGroup }) => {
           <IoMdArrowDroprightCircle />
         </span>
       </div>
-      <select className="fixed top-5 left-5 bg-gray-200/90 text-sm tracking-wide text-gray-700 uppercase rounded-md outline-none p-1 cursor-pointer hover:bg-gray-200">
+      <select
+        defaultValue={"Popular"}
+        onChange={(e) => (setGroup(e.target.value), setPage(1))}
+        className="fixed top-5 left-5 bg-gray-200/90 text-sm tracking-wide text-gray-700 uppercase rounded-md outline-none p-1 cursor-pointer hover:bg-gray-200"
+      >
         <option value="TopRated">Top Rated</option>
         <option value="Popular">Popular</option>
         <option value="Upcoming">Upcoming</option>
