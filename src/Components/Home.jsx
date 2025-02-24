@@ -1,6 +1,6 @@
 import Card from "./Card";
 import Navigation from "./Navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Home = () => {
   const [cardWidth, setCardWidth] = useState(500);
@@ -9,6 +9,13 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [group, setGroup] = useState("Popular");
+  const [mousePos, setMousePos] = useState({
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+  });
+  const cardRef = useRef(null);
 
   const apiKey = import.meta.env.VITE_API_KEY;
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -43,6 +50,7 @@ const Home = () => {
       <div
         className="flex justify-center items-center"
         style={{ width: wrapperWidth }}
+        ref={cardRef}
       >
         <div className="flex flex-wrap">
           {movies.map((movie, index) => [
