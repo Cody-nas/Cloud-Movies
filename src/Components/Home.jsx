@@ -17,6 +17,21 @@ const Home = () => {
   });
   const cardRef = useRef(null);
 
+  const getMousePositions = (e, referenceElement) => {
+    const positions = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+    const offset = {
+      left: positions.x,
+      top: positions.y,
+      width: referenceElement.clientWidth,
+      height: referenceElement.clientHeight,
+    };
+
+    setMousePos(offset);
+  };
+
   const apiKey = import.meta.env.VITE_API_KEY;
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -51,6 +66,7 @@ const Home = () => {
         className="flex justify-center items-center"
         style={{ width: wrapperWidth }}
         ref={cardRef}
+        onMouseMove={(e) => getMousePositions(e, cardRef.current)}
       >
         <div className="flex flex-wrap">
           {movies.map((movie, index) => [
