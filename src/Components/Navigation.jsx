@@ -6,14 +6,14 @@ const Navigation = ({ page, setPage, setGroup }) => {
     <div className="relative z-10">
       <div className="fixed bottom-5 left-5 flex items-center gap-x-2 text-2xl bg-yellow-500/50 rounded-full px-2">
         <span
-          onClick={() => page > 1 && setPage(page - 1)} // Check to prevent going below page 1
+          onClick={() => page != 1 && setPage((page) => page - 1)}
           className="cursor-pointer"
         >
           <IoMdArrowDropleftCircle />
         </span>
         <p className="text-xl select-none ">{page}</p>
         <span
-          onClick={() => setPage(page + 1)} // Increase the page number
+          onClick={() => setPage((page) => page + 1)}
           className="cursor-pointer"
         >
           <IoMdArrowDroprightCircle />
