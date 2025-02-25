@@ -19,6 +19,7 @@ const Home = () => {
 
   const cardRef = useRef(null);
 
+  const [loading, setLoading] = useState(false);
   const getMousePositions = (e, referenceElement) => {
     const positions = {
       x: e.clientX,
@@ -40,6 +41,7 @@ const Home = () => {
 
   useEffect(() => {
     const getMovies = async () => {
+      setLoading(true);
       const url = `${baseUrl}/${group}?Page=${page}&Language=en-US&Adult=true`;
       const options = {
         method: "GET",
@@ -56,6 +58,8 @@ const Home = () => {
         console.log(result);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -65,6 +69,10 @@ const Home = () => {
   return (
     <>
       <Navigation page={page} setPage={setPage} setGroup={setGroup} />
+      {}
+      <div className="h-screen w-screen flex justify-center items-center bg-[#240000]">
+        <h1 className="text-white text-4xl uppercase">Loading....</h1>
+      </div>
       <div
         className="flex justify-center items-center"
         style={{ width: wrapperWidth }}
