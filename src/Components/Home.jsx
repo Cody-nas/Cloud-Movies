@@ -35,9 +35,6 @@ const Home = () => {
     console.log(mousePos);
   };
 
-  // const xSpring = useSpring(x, { stiffness: 10, damping: 10 });
-  // const ySpring = useSpring(y, { stiffness: 10, damping: 10 });
-
   const apiKey = import.meta.env.VITE_API_KEY;
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -64,11 +61,6 @@ const Home = () => {
 
     getMovies();
   }, [page, group]);
-
-  // window.addEventListener("resize", () => {
-  //   setWindowWidth(window.innerWidth);
-  //   setWindowHeight(window.innerHeight);
-  // });
 
   return (
     <>
