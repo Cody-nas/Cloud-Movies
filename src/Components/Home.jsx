@@ -1,7 +1,7 @@
 import Card from "./Card";
 import Navigation from "./Navigation";
 import { useState, useEffect, useRef } from "react";
-import { useSpring } from "framer-motion";
+import { useSpring, motion } from "framer-motion";
 
 const Home = () => {
   const [cardWidth, setCardWidth] = useState(500);
@@ -35,8 +35,8 @@ const Home = () => {
     console.log(mousePos);
   };
 
-  const xSpring = useSpring(x, { stiffness: 10, damping: 10 });
-  const ySpring = useSpring(y, { stiffness: 10, damping: 10 });
+  // const xSpring = useSpring(x, { stiffness: 10, damping: 10 });
+  // const ySpring = useSpring(y, { stiffness: 10, damping: 10 });
 
   const apiKey = import.meta.env.VITE_API_KEY;
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -65,10 +65,10 @@ const Home = () => {
     getMovies();
   }, [page, group]);
 
-  window.addEventListener("resize", () => {
-    setWindowWidth(window.innerWidth);
-    setWindowHeight(window.innerHeight);
-  });
+  // window.addEventListener("resize", () => {
+  //   setWindowWidth(window.innerWidth);
+  //   setWindowHeight(window.innerHeight);
+  // });
 
   return (
     <>
@@ -81,9 +81,14 @@ const Home = () => {
       >
         <div className="flex flex-wrap">
           {movies.map((movie, index) => [
-            <div key={index}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              key={index}
+            >
               <Card movie={movie} cardWidth={cardWidth} />
-            </div>,
+            </motion.div>,
           ])}
         </div>
       </div>
