@@ -1,7 +1,7 @@
 import Card from "./Card";
 import Navigation from "./Navigation";
 import { useState, useEffect, useRef } from "react";
-import { useMotionValue, useTransform } from "framer-motion";
+import { useMotionValue, useTransform, motion } from "framer-motion";
 
 const Home = () => {
   const [cardWidth, setCardWidth] = useState(500);
@@ -42,6 +42,17 @@ const Home = () => {
   x.set(mousePos.left);
   y.set(mousePos.top);
 
+  const translateX = useTransform(
+    x,
+    [0, windowWidth],
+    [0, -mousePos.width + windowWidth]
+  );
+  const translateY = useTransform(
+    y,
+    [0, windowHeight],
+    [0, -mousePos.height + windowHeight]
+  );
+
   const apiKey = import.meta.env.VITE_API_KEY;
   const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -72,9 +83,9 @@ const Home = () => {
   return (
     <>
       <Navigation page={page} setPage={setPage} setGroup={setGroup} />
-      <div
+      <motion.div
         className="flex justify-center items-center"
-        style={{ width: wrapperWidth }}
+        style={{ width: wrapperWidth, translateX, translateY }}
         ref={cardRef}
         onMouseMove={(e) => getMousePositions(e, cardRef.current)}
       >
@@ -85,7 +96,7 @@ const Home = () => {
             </div>,
           ])}
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
