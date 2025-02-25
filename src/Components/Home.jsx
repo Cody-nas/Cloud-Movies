@@ -1,6 +1,7 @@
 import Card from "./Card";
 import Navigation from "./Navigation";
 import { useState, useEffect, useRef } from "react";
+import { useMotionValue, useTransform } from "framer-motion";
 
 const Home = () => {
   const [cardWidth, setCardWidth] = useState(500);
@@ -15,6 +16,8 @@ const Home = () => {
     width: 0,
     height: 0,
   });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const cardRef = useRef(null);
 
   const getMousePositions = (e, referenceElement) => {
@@ -30,7 +33,14 @@ const Home = () => {
     };
 
     setMousePos(offset);
+    console.log(mousePos);
   };
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  x.set(mousePos.left);
+  y.set(mousePos.top);
 
   const apiKey = import.meta.env.VITE_API_KEY;
   const baseUrl = import.meta.env.VITE_BASE_URL;
