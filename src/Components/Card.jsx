@@ -8,7 +8,7 @@ const Card = ({ cardWidth, movie }) => {
   return (
     <div
       style={{ width: cardWidth }}
-      className="h-[650px] relative flex justify-center items-center shrink-0 p-2  group"
+      className="h-[650px] lg:h-[550px] sm:h-[450px] relative flex justify-center items-center shrink-0 p-2  group"
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -36,7 +36,7 @@ const Card = ({ cardWidth, movie }) => {
         </span>
         <p className="flex flex-col gap-y-1">
           <span className="text-red-500">Summary:</span>
-          <span className="first-letter:pl-2">{overview}</span>
+          <p className="first-letter:pl-2 ">{overview}</p>
         </p>
       </motion.div>
       <img
