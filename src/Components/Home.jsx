@@ -76,6 +76,33 @@ const Home = () => {
     getMovies();
   }, [page, group]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
+
+      let newCardWidth = 500;
+      if (window.innerWidth < 1280) newCardWidth = 400;
+      if (window.innerWidth < 768) newCardWidth = 350;
+
+      setCardWidth(newCardWidth);
+      setWrapperWidth(newCardWidth * cardInRow);
+
+      x.set(mousePos);
+      y.set(mousePos);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    x.set(0), y.set(0);
+  }, [windowWidth, windowHeight]);
   return (
     <>
       <Navigation page={page} setPage={setPage} setGroup={setGroup} />
