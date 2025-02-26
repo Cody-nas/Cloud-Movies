@@ -64,6 +64,10 @@ const Home = () => {
         console.log(result);
       } catch (error) {
         console.error(error);
+        if (error.name === "AbortError") {
+          console.log("Aborted");
+          return;
+        }
       } finally {
         setLoading(false);
       }
